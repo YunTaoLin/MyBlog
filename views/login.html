@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>前端共學平台-登入頁面 | 模擬專案</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="../public/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading">
+        <h1>LOADING...</h1>
+    </div>
+    <div class="wrapper">
+        <div class="main">
+            <div class="header MyContainer">
+                <div class="page-header">
+                    <h1>用戶登入</h1>
+                </div>
+            </div>
+            <div class="comment MyContainer">
+                <form id="login_form">
+                    <div class="form-group">
+                        <label for="email">您的信箱</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group ">
+                        <label for="password">您的密碼　</label><a href="#" class="noPassword">忘記密碼</a>
+                        <input type="password" class="form-control" id="password" name="password">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <input type="submit" value="登入" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <a href="/" class="mybtn form-control">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <p>沒有帳號？ <a href="/register" class="register">快來註冊</a></p>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        (function($) {
+            $('#login_form').on('submit', function(e) {
+                e.preventDefault()
+                let formData = $(this).serialize()
+                console.log(formData)
+                $.ajax({
+                    url: '/login',
+                    type: 'post',
+                    datatype: 'json',
+                    data: formData
+                }).done(function(res) {
+                    console.log(res)
+                    if (res.err_code === 0) {
+                        window.location.href = '/'
+                    } else if (res.err_code === 1) {
+                        alert('信箱或密碼錯誤')
+                    } else {
+                        alert('伺服器忙線中，請稍後重試')
+                    }
+                }).fail(function(err) {
+                    console.log(err)
+                })
+            })
+        }($))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+{{extend './_layouts/home.html'}} {{block 'body'}}
+<div class="search_bar">
+    <form class="navbar-form navbar-left">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">搜尋</button>
+    </form>
+</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 media_area">
+
+            <div class="media-head">
+                <div class="row">
+                    <div class="col-md-1 col-xs-1"></div>
+                    <div class="col-md-1 media-classify"></div>
+                    <div class="col-md-10 col-xs-10"></div>
+                </div>
+            </div>
+            <ul class="media-list">
+                {{each commentList}}
+                <div class="media-item">
+                    <div class="col-md-1  col-xs-1 media-pic">
+                        <img src="{{$value.headimg}}" alt="headimg" class="media-object">
+                    </div>
+                    <div class="col-md-1 media-classify"><span>【{{$value.classify}}】</span><span>{{$value.issue}}</span></div>
+                    <div class="col-md-10  col-xs-10 media-content">
+                        <a href="/article?id={{$value.theId}}" class="media-title">{{$value.title}}</a>
+                        <p><span>發布時間：</span><span>{{$value.show_create_time}}</span><span>　|　{{$value.subscribe.length}}個人關注</span><span>　|　{{$value.reply}}個回復</span><span>　|　{{$value.seen}}次瀏覽　|　</span><span>作者：{{$value.username}}</span>　</p>
+                    </div>
+                </div>
+
+                </li>
+                {{/each }}
+            </ul>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="ture">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+{{/block}}

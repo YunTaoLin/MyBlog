@@ -1,0 +1,93 @@
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title>{{article.title}} 前端共學平台 | 模擬專案</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/main.css">
+    <link rel="stylesheet" href="public/article.css">
+
+</head>
+
+<body>
+    {{include '../_partials/header.html'}}
+
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="col-sm-8 blog-main">
+                <div class="blog-header">
+                    <h1 class="blog-title">{{article.title}}</h1>
+                    <p class="blog-post-meta">{{article.classify}}- {{article.issue}}　{{article.theTime}}　<br class="onlySm"> 作者：<a href="#">{{author.username}}</a></p>
+                </div>
+                <div class="blog-post">
+
+                    <div class="div">
+                        {{@ article.content}}
+                    </div>
+                </div>
+            </div>
+            <!-- /.blog-main -->
+
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module">
+                    <img src="{{author.headimg}}" alt="">
+                </div>
+                <div class="sidebar-module sidebar-module-inset">
+                    <h4>關於 {{author.username}}</h4>
+                    <p>{{author.bio}}</p>
+                </div>
+                <div class="sidebar-module">
+                    <h4>Archives</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">March 2014</a></li>
+                        <li><a href="#">February 2014</a></li>
+                        <li><a href="#">January 2014</a></li>
+                        <li><a href="#">December 2013</a></li>
+                        <li><a href="#">November 2013</a></li>
+                        <li><a href="#">October 2013</a></li>
+                        <li><a href="#">September 2013</a></li>
+                        <li><a href="#">August 2013</a></li>
+                        <li><a href="#">July 2013</a></li>
+                        <li><a href="#">June 2013</a></li>
+                        <li><a href="#">May 2013</a></li>
+                        <li><a href="#">April 2013</a></li>
+                    </ol>
+                </div>
+                <div class="sidebar-module">
+                    <h4>Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.blog-sidebar -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    {{include '../_partials/footer.html'}}
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

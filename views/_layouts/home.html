@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/main.css">
+    <link rel="stylesheet" href="public/blog.css">
+
+    <title>前端共學平台 | 模擬專案</title>
+    {{block 'head'}}{{/block}}
+</head>
+<style>
+    header {
+        width: 100vw;
+        height: 60px;
+    }
+    
+    .header_inner {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .control_bar {
+        display: flex;
+    }
+</style>
+
+<body>
+    {{include '../_partials/header.html'}} {{block 'body'}}{{/block}} {{include '../_partials/footer.html'}}
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js'></script>
+    {{block 'script'}}{{/block}}
+</body>
+
+</html>

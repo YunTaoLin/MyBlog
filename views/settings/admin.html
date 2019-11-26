@@ -1,0 +1,42 @@
+{{extend '../_layouts/home.html'}} {{block 'body'}}
+<section class="container">
+    {{include '../_partials/nav.html'}}
+    <div class="col-md-5">
+        <div class="subhead">
+            <h2>修改密碼</h2>
+        </div>
+        <hr>
+        <form action="">
+            <div class="form-group">
+                <label for="olderPassword">當前密碼</label>
+                <input type="password" class="form-contorl" id="InputPassword1" name="olderPassword">
+            </div>
+            <div class="form-group">
+                <label for="newPassword1">新的密碼</label>
+                <input type="password" class="form-contorl" id="InputPassword1" name="newPassword1">
+            </div>
+            <div class="form-group">
+                <label for="newPassword2">確認密碼</label>
+                <input type="password" class="form-contorl" id="InputPassword1" name="newPassword2">
+            </div>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{/block}}

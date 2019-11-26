@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>前端共學平台-註冊頁面 | 模擬專案</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="../public/regitster.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading">
+        <h1>LOADING...</h1>
+    </div>
+    <div class="wrapper">
+        <div class="main">
+            <div class="header MyContainer">
+                <div class="page-header">
+                    <h1>註冊帳號</h1>
+                </div>
+            </div>
+            <div class="comment MyContainer">
+                <form id="register_form">
+                    <div class="form-group ">
+                        <label for="username">設定暱稱（最多七字）</label>
+                        <input type="text" maxlength="7" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">您的信箱</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group  mb_40px">
+                        <label for="password">設定密碼　</label>
+                        <input type="password" class="form-control" id="password" name="password">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="註冊" class="form-control">
+                    </div>
+                </form>
+                <p>已有帳號? <a href="/login" class="login">點擊登入</a></p>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script>
+        (function($) {
+            $('#register_form').on('submit', function(e) {
+                e.preventDefault()
+                let formData = $(this).serialize()
+                    // console.log(formData)
+                $.ajax({
+                    url: '/register',
+                    type: 'post',
+                    datatype: 'json',
+                    data: formData
+                }).done(function(res) {
+
+                    console.log(res)
+                    if (res.err_code === 0) {
+                        alert('註冊成功')
+                        window.location.href = '/'
+                    } else if (res.err_code === 1) {
+                        alert('信箱或暱稱已被使用')
+                    } else if (res.err_code === 500) {
+                        alert('伺服器忙線中，請稍後重試')
+                    }
+                }).fail(function(err) {
+                    console.log(err)
+                })
+            })
+        }($))
+    </script>
+</body>
+
+
+</html>

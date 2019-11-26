@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='./public/blog.css' />
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: url('https://i2.bahamut.com.tw/html_bg.gif');
+        background-color: rgb(246, 255, 247);
+    }
+    
+    .edit_area {
+        margin-top: 40px;
+    }
+    
+    .edit_main {
+        border: 2px solid #ccc;
+        border-top: 4px solid #428BCA;
+        background-color: rgb(241, 241, 241);
+        box-shadow: 0 2px 4px 4px rgba(156, 156, 156, 0.5);
+        padding: 20px;
+    }
+    
+    .edit_main textarea {
+        width: 100%;
+        height: 50vh;
+    }
+    
+    .input_classify {
+        width: 16em;
+    }
+    
+    .input_classify .select_group {
+        display: flex;
+    }
+    
+    .input_classify .select_group #classify {
+        flex: 2;
+        margin-right: 4px;
+    }
+    
+    .input_classify .select_group #issue {
+        flex: 1;
+    }
+    
+    .input_title {
+        width: 80%;
+    }
+    
+    .list-unstyled li {
+        line-height: 2;
+        color: rgb(47, 111, 167);
+    }
+</style>
+
+<body>
+    <section class="container edit_area">
+        <div class="row">
+            <div class="col-sm-12 col-lg-9 edit_main">
+                <form action="">
+                    <div class="form-group input_classify">
+                        <label for="classify">選擇分類</label>
+                        <div class="select_group">
+                            <select class="form-control" name="classify" id="classify">
+                                <option>前端框架</option>
+                                <option>Javascript</option>
+                                <option>CSS相關</option>
+                                <option>UIUX相關</option>
+                                <option>後端相關</option>
+                                <option>純粹廢文</option>
+                            </select>
+                            <select class="form-control " name="issue" id="issue">
+                                <option>心得</option>
+                                <option>問題</option>
+                                <option>討論</option>
+                                <option>閒聊</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group input_title">
+                        <label for="title">標題</label>
+                        <input type="text" id="title" class="form-control" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">內容</label>
+                        <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="發表文章">
+                </form>
+            </div>
+            <div class="col-sm-3  blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                    <h4>About ME</h4>
+                    <p>我是個有為青年</p>
+                </div>
+                <div class="sidebar-module">
+                    <h4>曾發表過的文章</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">March 2014</a></li>
+
+                    </ol>
+                </div>
+                <div class="sidebar-module">
+                    <h4>個人資訊</h4>
+                    <ol class="list-unstyled">
+                        <li>發表過的文章數：0</li>
+                        <li>文章總瀏覽次數：0</li>
+                        <li>獲得的讚：0</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.blog-sidebar -->
+        </div>
+    </section>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
