@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/main.css">
     <link rel="stylesheet" href="public/article.css">
+    <link rel="stylesheet" href="public/reply.css">
 
 </head>
 
@@ -34,41 +35,54 @@
                         {{@ article.content}}
                     </div>
                 </div>
+                <div class="interaction">
+                    <a class="{{if ifLike}}active{{/if}}" id="like" href="javascript:;">
+                        <!-- <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> -->
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <span>讚</span>
+                    </a>
+                    <div class="share">
+                        分享到：
+                        <a id="share_fb"><img src="/public//img/facebook.10cfaa23.svg" alt="" class="icon"></a>
+                        <div class='line-it-button' style='display: none;' data-type='share-b' data-lang='zh-Hant'></div>
+                    </div>
+                </div>
+
+                {{include '../_partials/reply.html'}}
             </div>
             <!-- /.blog-main -->
 
             <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                 <div class="sidebar-module">
-                    <img src="{{author.headimg}}" alt="">
+                    <div class="anthor_img">
+                        <img src="{{author.headimg}}" alt="大頭照">
+                    </div>
                 </div>
                 <div class="sidebar-module sidebar-module-inset">
-                    <h4>關於 {{author.username}}</h4>
-                    <p>{{author.bio}}</p>
+                    <h4>About {{author.username}}</h4>
+                    <p>{{@ author.bio.replace(/\n/g, '<br>')}}</p>
                 </div>
                 <div class="sidebar-module">
-                    <h4>Archives</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="#">March 2014</a></li>
-                        <li><a href="#">February 2014</a></li>
-                        <li><a href="#">January 2014</a></li>
-                        <li><a href="#">December 2013</a></li>
-                        <li><a href="#">November 2013</a></li>
-                        <li><a href="#">October 2013</a></li>
-                        <li><a href="#">September 2013</a></li>
-                        <li><a href="#">August 2013</a></li>
-                        <li><a href="#">July 2013</a></li>
-                        <li><a href="#">June 2013</a></li>
-                        <li><a href="#">May 2013</a></li>
-                        <li><a href="#">April 2013</a></li>
-                    </ol>
+                    <h4>近期發表文章(前5篇)</h4>
+                    <ul class="list-unstyled">
+                        {{each commentList.slice(0,5)}}
+                        <li><a href="article?id={{@ $value._id}}">{{$value.title}}</a></li>
+                        {{/each }} {{if commentList.length >5}}
+                        <li><a href="#">...查看更多</a></li>
+                        {{/if}}
+                    </ul>
                 </div>
                 <div class="sidebar-module">
-                    <h4>Elsewhere</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                    </ol>
+                    <h4>聯繫方式</h4>
+                    {{if !author.fb && !author.github && !author.twitter}}無{{/if}}
+                    <div class="contact_group">
+
+                        {{if author.fb}}<a href="{{author.fb}}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>{{/if}} {{if author.github}}<a href="{{author.github}}"><i class="fa fa-github" aria-hidden="true"></i></a>{{/if}} {{if author.twitter}}
+                        <a href="{{author.twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a> {{/if}}
+
+
+                    </div>
+
                 </div>
             </div>
             <!-- /.blog-sidebar -->
@@ -77,6 +91,7 @@
         <!-- /.row -->
 
     </div>
+    <input type="hidden" value="{{@ article._id}}" id="article_id">
     <!-- /.container -->
 
     {{include '../_partials/footer.html'}}
@@ -86,8 +101,11 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/4ff583faf9.js"></script>
+    <script src='public/js/article.js'></script>
+    <script src='//scdn.line-apps.com/n/line_it/thirdparty/loader.min.js' async='async' defer='defer'></script>
+
 </body>
 
 </html>

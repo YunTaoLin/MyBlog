@@ -1,0 +1,227 @@
+/*
+ * Base structure
+ */
+
+* {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+body {
+    padding-top: 50px;
+}
+
+.admin {
+    min-height: 85vh;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.on-dev {
+    pointer-events: none;
+    color: #aaa;
+}
+
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+
+.navbar-fixed-top {
+    border: 0;
+}
+
+
+/*
+ * Sidebar
+ */
+
+
+/* Hide for mobile, show later */
+
+.sidebar {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 997;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
+}
+
+
+/* Sidebar navigation */
+
+.nav-sidebar {
+    margin-right: -21px;
+    /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+
+.nav-sidebar>li>a {
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+.nav-sidebar>.active>a,
+.nav-sidebar>.active>a:hover,
+.nav-sidebar>.active>a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+
+.nav_title {
+    font-size: 24px;
+    padding: 4px 12px;
+    position: relative;
+}
+
+.nav_title:after {
+    content: '';
+    width: 80%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: .4em;
+    background-color: #ccc;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+
+.main .page-header {
+    margin-top: 0;
+}
+
+
+/*
+ * 文章列表
+ */
+
+.table-striped>thead th {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.table-striped>thead th:nth-of-type(1) {
+    width: 30%;
+    table-layout: fixed;
+}
+
+.table-striped>thead th:nth-of-type(2),
+.table-striped>thead th:nth-of-type(3),
+.table-striped>thead th:nth-of-type(4) {
+    width: 10%;
+    table-layout: fixed;
+    text-align: center;
+}
+
+.table-striped>thead th:nth-of-type(5),
+.table-striped>thead th:nth-of-type(6) {
+    width: 20%;
+    table-layout: fixed;
+    text-align: center;
+}
+
+.table-striped>tbody>tr>td:nth-of-type(2),
+.table-striped>tbody>tr>td:nth-of-type(3),
+.table-striped>tbody>tr>td:nth-of-type(4),
+.table-striped>tbody>tr>td:nth-of-type(5),
+.table-striped>tbody>tr>td:nth-of-type(6) {
+    text-align: center;
+}
+
+tbody a {
+    color: #666;
+    padding: 0 8px;
+    transition: .2s;
+}
+
+tr td:nth-of-type(1) a {
+    color: rgb(38, 88, 131);
+}
+
+tbody a:hover,
+tbody a:focus {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*
+ * 成就區Achievements
+ */
+
+.achievements {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.achievement h3 {
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.achievement p {
+    font-size: 60px;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.achievement:nth-of-type(1) p {
+    color: rgb(69, 128, 182);
+}
+
+.achievement:nth-of-type(2) p {
+    color: rgb(97, 68, 124);
+}
+
+.achievement:nth-of-type(3) p {
+    color: rgb(68, 124, 85);
+}
+
+.achievement:nth-of-type(4) p {
+    color: #ca331f;
+}
+
+.achievement {
+    margin-bottom: 20px;
+}
+
+.sidebar {
+    box-shadow: 2px 0 8px RGBA(30, 30, 60, .3);
+}

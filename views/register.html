@@ -51,7 +51,6 @@
             $('#register_form').on('submit', function(e) {
                 e.preventDefault()
                 let formData = $(this).serialize()
-                    // console.log(formData)
                 $.ajax({
                     url: '/register',
                     type: 'post',

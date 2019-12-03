@@ -65,14 +65,14 @@
                 }).done(function(res) {
                     console.log(res)
                     if (res.err_code === 0) {
-                        window.location.href = '/'
+                        window.location.href = '{{to? to : ' / '}}';
                     } else if (res.err_code === 1) {
                         alert('信箱或密碼錯誤')
                     } else {
                         alert('伺服器忙線中，請稍後重試')
                     }
                 }).fail(function(err) {
-                    console.log(err)
+                    alert('伺服器忙線中，請稍後重試')
                 })
             })
         }($))

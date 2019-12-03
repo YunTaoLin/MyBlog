@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8">
+    <title>個人管理區-前端共學平台</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css' />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500&display=swap" rel="stylesheet">
+    <link href="public/profile.css" rel="stylesheet">
+    <link href="public/admin.css" rel="stylesheet">
+    <link href="public/main.css" rel="stylesheet">
+</head>
+
+<body>
+    {{include '../_partials/header.html'}}
+    <div class="container-fluid">
+        {{include '../_partials/setting_side.html'}}
+        <div class="col-sm-12  col-md-6 col-md-offset-3">
+
+            <!-- ===== 側邊欄+頭像 ===== -->
+            <div class="row w">
+                <div class="col-md-3">
+                    <div class="pic">
+                        <img class="img-responsive" src="{{user.headimg}}" alt="大頭照">
+                        <form action="/updateImg" method="POST" id="upload_img_form" enctype="multipart/form-data">
+                            <label>
+                              <input name="upload_img" id="upload_img" style="display:none" type="file" accept="image/gif, image/jpeg, image/png">
+                              <i class="fa fa-camera" aria-hidden="true"></i>
+                              <span>變更照片</span>
+                          </label>
+                        </form>
+                    </div>
+                    <ul class="nav nav-tabs nav-stacked" id="myTab">
+                        <li class="active"><a href="#about">個人簡介</a></li>
+                        <li><a href="#profile">帳號設置</a></li>
+                        <li><a href="#contact">聯絡資訊</a></li>
+                    </ul>
+                </div>
+                <!-- col-md-4 -->
+
+                <!-- ===== 主要顯示面板 ===== -->
+                <div class="col-md-9">
+                    <div class="tab-content">
+
+                        <!-- ===== 個人簡介 ===== -->
+                        <div class="tab-pane active" id="about">
+                            <h3>關於：{{user.username}}</h3>
+                            <a href="javascript:;" id="about_edit_btn"><i class="fa fa-pencil" aria-hidden="true"></i>修改個人簡介</a>
+                            <hr>
+                            <p id="about_content">{{@ user.bio.replace(/\n/g, '<br>')}}</p>
+                            <div id="about_edit_from" style="display: none;">
+                                <textarea name="bio" id="about_text" rows="9" class="form-control">{{user.bio}}</textarea>
+                                <div class="group">
+                                    <button class="btn btn-primary" id="about_edit_submit">保存</button>
+                                    <button class="btn btn-default" id="about_edit_cancel">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab about -->
+
+                        <!-- ===== 基本資訊 ===== -->
+                        <div class="tab-pane" id="profile">
+                            <div>
+                                <a href="javascript:;" id="profile_edit_btn">
+                                    <h3>變更設置 <i class="fa fa-pencil" aria-hidden="true"></i></h3>
+                                </a>
+                            </div>
+                            <hr class="profile_hr">
+
+                            <div id="profile_content">
+                                <div>
+                                    <h4>暱稱：<br class="onlyXs"><span id="username">{{user.username}}</span></h4>
+                                </div>
+                                <hr class="profile_hr">
+                                <div>
+                                    <h4>登入信箱：<br class="onlyXs"><span id="email">{{user.email}}</span></h4>
+                                </div>
+                                <hr class="profile_hr">
+                                <div>
+                                    <h4>性別：<br class="onlyXs"><span id="gender">{{if user.gender==1}}男{{else if user.gender==0}}女{{else}}保密{{/if}}</span></h4>
+                                </div>
+                                <hr class="profile_hr">
+                                <div>
+                                    <h4>備用信箱：<br class="onlyXs"><span id="otherEmail">{{user.otherEmail? user.otherEmail : '無'}}</span></h4>
+                                </div>
+                                <hr class="profile_hr">
+                                <div>
+                                    <h4 class="time">加入平台日期：<span>{{@ user.create_time.toLocaleDateString()}}</span></h4>
+                                </div>
+                            </div>
+                            <form id="profile_edit_form" style="display: none;">
+                                <div class="form-group">
+                                    <label for="username">
+                                  <span>暱稱：</span>
+                                  <input type="text"  name="username" value="{{user.username}}">
+                                </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">
+                                  <span>登入信箱：</span>
+                                  <input type="email"  name="email" value="{{user.email}}">
+                                </label>
+                                </div>
+                                <div class="form-group">
+                                    <span>性別：</span>
+                                    <label for="gender_boy" class="select_gender">
+                                      <input type="radio" name="gender" value="1" id="gender_boy" {{if user.gender ==1 }}checked{{/if}} >
+                                      男
+                                    </label>
+                                    <label for="gender_girl" class="select_gender">
+                                      <input type="radio" name="gender" value="0"  id="gender_girl" {{if user.gender ==0 }}checked{{/if}}>
+                                      女
+                                    </label>
+                                    <label for="gender_hide" class="select_gender">
+                                      <input type="radio" name="gender" value="-1" id="gender_hide" {{if user.gender ==-1 }}checked{{/if}}>
+                                      保密 
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="otherEmail">
+                                  <span>備用信箱：</span>
+                                  <input type="email" id="otherEmail" name="otherEmail" value="{{user.otherEmail}}" >
+                                </label>
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="btn btn-primary" id="profile_edit_submit" value="保存">
+                                    <button class="btn btn-default" id="profile_edit_cancel">取消</button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!-- Tab Profile -->
+
+                        <!-- ===== 聯絡資訊 ===== -->
+                        <div class="tab-pane" id="contact">
+                            <div class="row">
+                                <div class="col-md-6 contact_item">
+                                    <h4>
+                                        <i class="fa fa-github" aria-hidden="true"></i>Github
+                                        <a href="javascript:;" class="edit" id="github_edit_btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    </h4>
+                                    <p id="github_content">{{user.github? user.github : '無'}}</p>
+                                    <div class="contact_edit" id="github_edit_form" style="display: none;">
+                                        <input type="text" id="github" value="{{user.github? user.github : ''}}">
+                                        <button class="btn btn-primary btn-sm" id="github_edit_submit">保存</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 contact_item">
+
+                                    <h4>
+                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook
+                                        <a href="javascript:;" class="edit" id="fb_edit_btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    </h4>
+                                    <p id="fb_content">{{user.fb? user.fb : '無'}}</p>
+                                    <div class="contact_edit" id="fb_edit_form" style="display: none;">
+                                        <input type="text" id="fb" value="{{user.fb? user.fb : ''}}">
+                                        <button class="btn btn-primary btn-sm" id="fb_edit_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 contact_item">
+                                    <h4>
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>Twitter
+                                        <a href="javascript:;" class="edit" id="twitter_edit_btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    </h4>
+                                    <p id="twitter_content">{{user.twitter? user.twitter : '無'}}</p>
+                                    <div class="contact_edit" id="twitter_edit_form" style="display: none;">
+                                        <input type="text" id="twitter" value="{{user.twitter? user.twitter : ''}}">
+                                        <button class="btn btn-primary btn-sm" id="twitter_edit_submit">保存</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 contact_item">
+
+                                    <h4>
+                                        <i class="fa fa-phone" aria-hidden="true"></i>Phone
+                                        <a href="javascript:;" class="edit" id="phone_edit_btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    </h4>
+                                    <p id="phone_content">{{user.phone ?user.phone : '無'}}</p>
+                                    <div class="contact_edit" id="phone_edit_form" style="display: none;">
+                                        <input type="tel" id="phone" value="{{user.phone ?user.phone : ''}}">
+                                        <button class="btn btn-primary btn-sm" id="phone_edit_submit">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Tab contact -->
+                    </div>
+                    <!-- Tab Content -->
+                </div>
+                <!-- col-md-8 -->
+            </div>
+            <!-- row w -->
+        </div>
+        <!-- col-lg-6 -->
+    </div>
+    <!-- /.container -->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src="https://use.fontawesome.com/4ff583faf9.js"></script>
+    <script src="public/js/profile.js"></script>
+</body>
+
+</html>

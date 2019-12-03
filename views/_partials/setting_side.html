@@ -1,0 +1,14 @@
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li class="nav_title">個人</li>
+        <li class="{{if where == '/admin'}}active{{/if}}"><a href="/admin?user={{user.username}}">文章管理</a></li>
+        <li class="{{if where == '/profile'}}active{{/if}}"><a href="/profile?user={{user.username}}">編輯個人資訊</a></li>
+        <li><a href="#" class="on-dev ">我的小屋（未開放）</a></li>
+        <li><a href="#" class="on-dev ">修改密碼（未開放）</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="nav_title">其他</li>
+        <li><a href="#" class="on-dev ">會員協助中心（未開放）</a></li>
+        <li><a href="#" class="on-dev ">贊助開發團隊（未開放）</a></li>
+    </ul>
+</div>

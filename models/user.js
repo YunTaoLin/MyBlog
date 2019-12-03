@@ -43,14 +43,30 @@ const User = mongoose.model('User', {
         enum: [0, 1, -1],
         default: -1
     },
-    birthday: {
-        type: Date
+    otherEmail: {
+        type: String
     },
     status: {
         type: Number,
         default: 0,
         //0: 正常，1:不能發文，2:封鎖帳號中
         enum: [0, 1, 2]
+    },
+    github: {
+        type: String
+    },
+    fb: {
+        type: String
+    },
+    twitter: {
+        type: String
+    },
+    phone: {
+        type: String
+    },
+    //按過讚的文章
+    like: {
+        type: Array
     }
 
 })

@@ -1,0 +1,34 @@
+<div class="replay_area">
+    <div class="reply__head">
+        <div class="title">回覆</div>
+        <a class="more-reply" href="javascript:;" id="show_reply">
+            <span>▼</span>
+            <span id="older_reply">看較舊留言</span>
+        </a>
+        <a class="hide-reply " href="javascript:;" id="hide_reply">
+            <span>▲</span>
+            <span>收合留言</span>
+        </a>
+    </div>
+    <!-- 留言列表(ajax) -->
+    <div id="replyList">
+
+    </div>
+
+    <!-- 編輯自己 -->
+    {{if user}}
+    <div class="reply__editor">
+        <div class="pic">
+            <img src="{{user.headimg}}" alt="留言人大頭照" class="pic_img">
+        </div>
+        <div class="reply_input">
+            <input type="hidden" value="{{user._id}}" id="user_id">
+            <input id="reply_input" class="form-control" placeholder="回覆..." maxlength="100" title="小提醒~限制長度100字哦"></input>
+        </div>
+    </div>
+    {{else if !user}}
+    <div class="reply__editor">
+        <a href="/login" class="loginToReply">登入後可進行留言</a>
+    </div>
+    {{/if}}
+</div>

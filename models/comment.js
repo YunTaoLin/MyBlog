@@ -58,11 +58,6 @@ const Comment = mongoose.model('Comment', {
         type: Array,
         default: []
     },
-    //文章回覆數量
-    reply: {
-        type: Number,
-        default: 0
-    },
     //當前備註(當有人回覆時可能更新)
     status: {
         type: String,

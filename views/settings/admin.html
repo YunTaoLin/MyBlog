@@ -1,42 +1,125 @@
-{{extend '../_layouts/home.html'}} {{block 'body'}}
-<section class="container">
-    {{include '../_partials/nav.html'}}
-    <div class="col-md-5">
-        <div class="subhead">
-            <h2>修改密碼</h2>
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>個人管理區-前端共學平台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="public/admin.css" rel="stylesheet">
+    <link href="public/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    {{include '../_partials/header.html'}}
+
+    <div class="container-fluid admin">
+        <div class="row">
+            {{include '../_partials/setting_side.html'}}
+            <div class=" col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">個人成就</h1>
+
+                <div class="row achievements">
+                    <div class="col-xs-6 col-md-3 achievement">
+                        <p>{{commentList.length}}</p>
+                        <h3>發表文章數</h3>
+                        <span class="text-muted">Articles Published</span>
+                    </div>
+                    <div class="col-xs-6 col-md-3 achievement">
+                        <p>{{total_seen}}</p>
+                        <h3>觀看總數</h3>
+                        <span class="text-muted">Views</span>
+                    </div>
+                    <div class="col-xs-6 col-md-3 achievement">
+                        <p>{{total_reply}}</p>
+                        <h3>回覆總數</h3>
+                        <span class="text-muted">Replies</span>
+                    </div>
+                    <div class="col-xs-6 col-md-3 achievement">
+                        <p>{{total_good}}</p>
+                        <h3>得到的讚</h3>
+                        <span class="text-muted">Like</span>
+                    </div>
+                </div>
+
+                <h2 class="sub-header">文章列表</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>標題</th>
+                                <th>觀看數</th>
+                                <th>回覆數</th>
+                                <th>得到讚</th>
+                                <th>最後更新時間</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{each commentList}}
+                            <tr id="{{@ $value._id}}">
+                                <td><a href="/article?id={{@ $value._id}}">{{$value.title}}</a></td>
+                                <td>{{$value.seen}}</td>
+                                <td>{{ $value.reply? $value.reply:0}}</td>
+                                <td>{{$value.good}}</td>
+                                <td>{{$value.last_modified_time.toLocaleString()}}</td>
+                                <td>
+                                    <a href="/edit?article={{@ $value._id}}"><i class="fa fa-pencil" aria-hidden="true"></i> 編輯</a>
+                                    <a href="javascript:;" onclick="articleDelete('{{@ $value._id}}')"><i class="fa fa-trash-o" aria-hidden="true"></i> 刪除</a>
+                                </td>
+                            </tr>
+                            {{/each }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <hr>
-        <form action="">
-            <div class="form-group">
-                <label for="olderPassword">當前密碼</label>
-                <input type="password" class="form-contorl" id="InputPassword1" name="olderPassword">
-            </div>
-            <div class="form-group">
-                <label for="newPassword1">新的密碼</label>
-                <input type="password" class="form-contorl" id="InputPassword1" name="newPassword1">
-            </div>
-            <div class="form-group">
-                <label for="newPassword2">確認密碼</label>
-                <input type="password" class="form-contorl" id="InputPassword1" name="newPassword2">
-            </div>
-            <input type="submit" class="btn btn-primary">
-        </form>
     </div>
+    {{include '../_partials/footer.html'}}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/4ff583faf9.js"></script>
+    <script>
+        function articleDelete(id) {
+            if (confirm('確定刪除「' + $('#' + id + '>td>a').html() + '」文章嗎?')) {
+                password = prompt('請輸入使用者密碼')
+                $.ajax({
+                    url: '/delete',
+                    type: 'post',
+                    datatype: 'json',
+                    data: {
+                        password: password,
+                        id: id
+                    }
+                }).done(function(res) {
+                    if (res.err_code == 500) {
+                        alert('伺服器忙線中，請稍後再試')
+                    } else if (res.err_code == 1) {
+                        alert('密碼錯誤，刪除失敗')
+                    } else {
+                        alert('刪除成功')
+                        $('#' + id).remove()
+                    }
+                }).fail(function(err) {
+                    alert('伺服器忙線中，請稍後再試')
 
-</section>
+                })
+            }
 
+        }
+    </script>
+</body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{/block}}
+</html>
