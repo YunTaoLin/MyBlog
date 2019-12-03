@@ -1,14 +1,11 @@
 /*
  * Globals
  */
-
-
 /* 
 body {
     background: url('https://i2.bahamut.com.tw/html_bg.gif');
     background-color: rgb(255, 246, 218);
 } */
-
 h1,
 .h1,
 h2,
@@ -21,216 +18,202 @@ h5,
 .h5,
 h6,
 .h6 {
-    margin-top: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    color: #333;
+  margin-top: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
 }
-
 
 /*
  * Override Bootstrap's default container.
  */
-
-
 /* @media (min-width: 1200px) {
     .container {
         width: 970px;
     }
 } */
-
-
 /*
  * Masthead for nav
  */
-
 .blog-masthead {
-    background-color: #428bca;
-    -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
-    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Nav links */
-
 .blog-nav-item {
-    position: relative;
-    display: inline-block;
-    padding: 10px;
-    font-weight: 500;
-    color: #cdddeb;
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 500;
+  color: #cdddeb;
 }
 
 .blog-nav-item:hover,
 .blog-nav-item:focus {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
-
 /* Active state gets a caret at the bottom */
-
 .blog-nav .active {
-    color: #fff;
+  color: #fff;
 }
 
 .blog-nav .active:after {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 0;
-    margin-left: -5px;
-    vertical-align: middle;
-    content: " ";
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid;
-    border-left: 5px solid transparent;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  vertical-align: middle;
+  content: " ";
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-left: 5px solid transparent;
 }
-
 
 /*
  * Blog name and description
  */
-
 .blog-header {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .blog-title {
-    margin-top: 30px;
-    margin-bottom: 0;
-    font-size: 60px;
-    font-weight: normal;
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 60px;
+  font-weight: normal;
 }
 
 .blog-description {
-    font-size: 20px;
-    color: #999;
+  font-size: 20px;
+  color: #999;
 }
-
 
 /*
  * Main column and sidebar layout
  */
-
 .blog-main {
-    font-size: 18px;
-    line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
-
 /* Sidebar modules for boxing content */
-
 .sidebar-module {
-    padding: 15px;
-    margin: 0 0 15px 12px;
+  padding: 15px;
+  margin: 0 0 15px 12px;
 }
 
 .sidebar-module-inset {
-    margin-left: 12px;
-    background-color: #e1f1f6;
-    border-radius: 4px;
+  margin-left: 12px;
+  background-color: #e1f1f6;
+  border-radius: 4px;
 }
 
 .sidebar-module-inset p:last-child,
 .sidebar-module-inset ul:last-child,
 .sidebar-module-inset ol:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-
 
 /* Pagination */
-
 .pager {
-    margin-bottom: 60px;
-    text-align: left;
+  margin-bottom: 60px;
+  text-align: left;
 }
 
-.pager>li>a {
-    width: 140px;
-    padding: 10px 20px;
-    text-align: center;
-    border-radius: 30px;
+.pager > li > a {
+  width: 140px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 30px;
 }
-
 
 /*
  * Blog posts
  */
-
 .blog-post {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 .blog-post-title {
-    margin-bottom: 5px;
-    font-size: 40px;
+  margin-bottom: 5px;
+  font-size: 40px;
 }
 
 .blog-post-meta {
-    margin-bottom: 20px;
-    color: #999;
+  margin-bottom: 20px;
+  color: #999;
 }
 
 .edit_area {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .edit_main {
-    border: 2px solid #ccc;
-    border-top: 4px solid #428BCA;
-    background-color: rgb(241, 241, 241);
-    box-shadow: 0 2px 4px 4px rgba(156, 156, 156, 0.5);
-    padding: 20px;
-    margin-bottom: 40px;
+  border: 2px solid #ccc;
+  border-top: 4px solid #428BCA;
+  background-color: #f1f1f1;
+  -webkit-box-shadow: 0 2px 4px 4px rgba(156, 156, 156, 0.5);
+          box-shadow: 0 2px 4px 4px rgba(156, 156, 156, 0.5);
+  padding: 20px;
+  margin-bottom: 40px;
 }
 
 .edit_main textarea {
-    width: 100%;
-    height: 50vh;
+  width: 100%;
+  height: 50vh;
 }
 
 .input_classify {
-    width: 16em;
+  width: 16em;
 }
 
 .input_classify .select_group {
-    display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .input_classify .select_group #classify {
-    flex: 2;
-    margin-right: 4px;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin-right: 4px;
 }
 
 .input_classify .select_group #issue {
-    flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .input_title {
-    width: 80%;
+  width: 80%;
 }
 
 .list-unstyled li {
-    line-height: 2;
-    color: rgb(47, 111, 167);
+  line-height: 2;
+  color: #2f6fa7;
 }
-
 
 /*
  * Footer
  */
-
 .blog-footer {
-    padding: 40px 0;
-    color: #999;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-top: 1px solid #e5e5e5;
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
 }
 
 .blog-footer p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
+/*# sourceMappingURL=blog.css.map */

@@ -1,134 +1,164 @@
+@charset "UTF-8";
 html,
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 * {
-    font-family: 'Noto Sans TC', '微軟正黑體';
+  font-family: 'Noto Sans TC', '微軟正黑體';
 }
 
 h1 {
-    font-family: 'Noto Sans TC', '微軟正黑體';
-    font-weight: 400;
+  font-family: 'Noto Sans TC', '微軟正黑體';
+  font-weight: 400;
 }
 
 .wrapper {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: url('./img/bg-register.jpg');
-    background-position: 100% 50%;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url("./img/bg-register.jpg");
+  background-position: 100% 50%;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .main {
-    /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #98989899; */
-    background-image: linear-gradient(-20deg, #2e2e2eaa, #464646aa);
-    background-blend-mode: multiply, multiply;
-    ;
-    padding: 20px 60px 40px;
-    border-radius: 8px;
-    color: #fff;
+  /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #98989899; */
+  background-image: linear-gradient(-20deg, #2e2e2eaa, #464646aa);
+  background-blend-mode: multiply, multiply;
+  padding: 20px 60px 40px;
+  border-radius: 8px;
+  color: #fff;
 }
 
 .form-control {
-    background-color: transparent;
-    color: #fff;
+  background-color: transparent;
+  color: #fff;
 }
 
 select,
 option {
-    font-size: 18px;
-    padding: 0 2px;
-    margin-left: 4px;
-    background-color: transparent;
+  font-size: 18px;
+  padding: 0 2px;
+  margin-left: 4px;
+  background-color: transparent;
 }
 
 option {
-    background-color: #444;
+  background-color: #444;
 }
 
 .MyContainer {
-    width: 400px;
+  width: 400px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 575px) {
+  .main {
+    padding: 4px 4px 12px;
+    border-radius: 8px;
+    color: #fff;
+  }
+  .MyContainer {
+    width: 90vw;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
-
-@media (max-width:575px) {
-    .main {
-        padding: 4px 4px 12px;
-        border-radius: 8px;
-        color: #fff;
-    }
-    .MyContainer {
-        width: 90vw;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
+  }
 }
 
 .mb_40px {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 label {
-    font-size: 18px;
-    font-weight: 400 !important;
+  font-size: 18px;
+  font-weight: 400 !important;
 }
 
 input[type=submit] {
-    background-color: #2A77BD;
-    border: none;
-    transition: .3s;
+  background-color: #2A77BD;
+  border: none;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 input[type=submit]:hover {
-    background-color: rgb(36, 102, 165);
-    border: none;
+  background-color: #2466a5;
+  border: none;
 }
 
 .login {
-    color: skyblue;
-    color: 18px;
+  color: skyblue;
+  color: 18px;
 }
 
 .login:hover {
-    color: rgb(149, 225, 255);
-    color: 18px;
-    text-decoration: none;
+  color: #95e1ff;
+  color: 18px;
+  text-decoration: none;
 }
 
 .loading {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeOut .5s 2s;
-    animation-fill-mode: forwards;
-    z-index: 888;
-    background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-animation: fadeOut .5s 2s;
+          animation: fadeOut .5s 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  z-index: 888;
+  background-color: #fff;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
+/*# sourceMappingURL=regitster.css.map */
