@@ -2,8 +2,15 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const session = require('express-session')
-const router = require('./router')
+    // const router = require('./router')
 const bodyParser = require('body-parser')
+
+//路由
+const index = require('./router/index')
+const article = require('./router/article')
+const admin = require('./router/admin')
+const account = require('./router/account')
+
 
 app.use('/public/', express.static(path.join(__dirname + '/public')))
 app.use('/node_modules/', express.static(path.join(__dirname + '/node_modules')))
@@ -25,7 +32,11 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
     //掛載路由
-app.use(router)
+
+app.use(article);
+app.use(admin);
+app.use(account);
+app.use(index)
 
 
 
