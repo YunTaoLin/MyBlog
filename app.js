@@ -41,7 +41,7 @@ app.use(index)
 
 
 
-app.listen(3000, (err, res) => {
+app.listen(80, (err, res) => {
     if (err) throw err
     console.log('啟動成功')
 })
