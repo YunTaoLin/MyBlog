@@ -46,7 +46,7 @@
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    {{ /if}} {{each pageArray}}
+                    {{ /if}} {{if pageArray}}{{each pageArray}}
                     <li class="{{nowPage == $value? 'active' : ''}}"><a href="/?page={{$value}}">{{$value}}</a></li>
                     {{/each}} {{if pageArray.length>nowPage }}
                     <li>
@@ -54,7 +54,7 @@
                             <span aria-hidden="ture">&raquo;</span>
                         </a>
                     </li>
-                    {{ /if}}
+                    {{ /if}}{{ /if}}
                 </ul>
             </nav>
         </div>
