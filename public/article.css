@@ -288,13 +288,13 @@
 }
 
 .interaction #like.active {
-  color: #dd3c26;
+  color: #dd6f26;
   -webkit-animation: jump .4s;
           animation: jump .4s;
 }
 
 .interaction #like.active i {
-  border: 2px solid #dd3c26;
+  border: 2px solid #dd6f26;
 }
 
 @-webkit-keyframes jump {
