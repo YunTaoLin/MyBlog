@@ -5,5 +5,5 @@ function trans_time(time) {
     hours = String(time.getHours() < 10 ? '0' + time.getHours() : time.getHours())
     minutes = String(time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())
     return year + '/' + month + '/' + date + '  ' + hours + ':' + minutes
-}
+};
 module.exports = trans_time
