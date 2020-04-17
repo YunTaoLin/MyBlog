@@ -3,19 +3,11 @@ let router = express.Router()
 
 //markdown 轉HTML
 let showdown = require('showdown')
-let converter = new showdown.Converter()
-
-// 大頭照儲存
-const multer = require('multer')
 
 // 密碼加密
 let md5 = require('blueimp-md5')
 
 let User = require('../models/user', { useMongoClient: true })
-let Comment = require('../models/comment.js', { useMongoClient: true })
-let Reply = require('../models/reply.js', { useMongoClient: true })
-
-let trans_time = require('../public/js/transTime')
 
 
 
@@ -127,18 +119,6 @@ router.get('/logout', function(req, res) {
     req.session.user = null
     res.redirect('/login')
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router
