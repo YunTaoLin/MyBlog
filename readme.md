@@ -27,4 +27,4 @@
 ![列表](https://i.imgur.com/VnlmrUl.png)
 
 自主管理頁面
-![管理]{https://i.imgur.com/bhS4Vz3.png}
+![管理](https://i.imgur.com/bhS4Vz3.png)
