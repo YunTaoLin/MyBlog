@@ -19,3 +19,12 @@
    + 文章管理提供了簡單清楚的表格，可供用戶了解文章的詳細數據，另可進行刪除或編輯等操作。
    + 全網站支持RWD及移動端優化，可在不同裝置、瀏覽器下使用。
 
+#### 部分截圖
+登入頁面
+![登入](https://i.imgur.com/N3wpHly.png)
+
+文章列表
+![列表](https://i.imgur.com/VnlmrUl.png)
+
+自主管理頁面
+![管理]{https://i.imgur.com/bhS4Vz3.png}
